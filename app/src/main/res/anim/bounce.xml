@@ -2,9 +2,16 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:interpolator="@android:anim/bounce_interpolator" >
 
+    <translate
+        android:fromYDelta="-30%p"
+        android:toYDelta="0%p"
+        android:fillAfter="true"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:duration="1200" />
+
     <scale
-        android:duration="600"
-        android:fromXScale="1"
+        android:duration="1200"
+        android:fromXScale="0.5"
         android:fromYScale="0.5"
         android:pivotX="50%"
         android:pivotY="0%"
@@ -12,7 +19,7 @@
         android:toYScale="1.0" />
 
     <alpha
-        android:duration="600"
+        android:duration="1200"
         android:fromAlpha="0.0"
         android:toAlpha="1.0" />
 

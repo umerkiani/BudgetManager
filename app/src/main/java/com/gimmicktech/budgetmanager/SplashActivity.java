@@ -1,36 +1,45 @@
 package com.gimmicktech.budgetmanager;
 
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-public class SplashActivity extends AppCompatActivity {
+import com.gimmicktech.budgetmanager.activity.LoginActivity;
+import com.gimmicktech.budgetmanager.databinding.ActivitySplashBinding;
+
+public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener {
+
+    private ActivitySplashBinding bindingViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        final Animation anim = AnimationUtils.loadAnimation(getApplicationContext() , R.anim.bounce);
-      final  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                fab.startAnimation(anim);
+
+        bindingViewHolder = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+//        bindingViewHolder.setUser(new User());
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        bindingViewHolder.inContent.imageView.setAnimation(anim);
+        anim.setAnimationListener(this);
+
+//        bindingViewHolder.inContent.imageView.se
 
 
-            }
-        });
+//        bindingViewHolder.inContent.setNote("Ok i Got it ");
+
+
+//    bindingViewHolder.inContent.
+//bindingViewHolder.inContent.
+
+
+//        setContentView(R.layout.activity_splash);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        final Animation anim = AnimationUtils.loadAnimation(getApplicationContext() , R.anim.bounce);
 
 
     }
@@ -55,5 +64,22 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        
+        startActivity(new Intent(getApplicationContext() , LoginActivity.class));
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
     }
 }
