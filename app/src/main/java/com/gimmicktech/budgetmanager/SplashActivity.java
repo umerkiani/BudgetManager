@@ -73,7 +73,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        
+
         startActivity(new Intent(getApplicationContext() , LoginActivity.class));
 
     }
