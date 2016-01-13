@@ -1,5 +1,6 @@
 package com.gimmicktech.budgetmanager.models;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -8,8 +9,10 @@ import android.content.Context;
 public class AppContext {
 
     public static Context context;
-    public static Context getContext(){
-        return  context;
+    public static Activity activity;
+
+    public static Context getContext() {
+        return context;
     }
 
 

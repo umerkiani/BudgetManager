@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import com.gimmicktech.budgetmanager.activity.LoginActivity;
 import com.gimmicktech.budgetmanager.databinding.ActivitySplashBinding;
 
+
 public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     private ActivitySplashBinding bindingViewHolder;
@@ -25,6 +26,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         bindingViewHolder.inContent.imageView.setAnimation(anim);
         anim.setAnimationListener(this);
+
 
 //        bindingViewHolder.inContent.imageView.se
 
@@ -74,7 +76,8 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
     @Override
     public void onAnimationEnd(Animation animation) {
 
-        startActivity(new Intent(getApplicationContext() , LoginActivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        this.finish();
 
     }
 

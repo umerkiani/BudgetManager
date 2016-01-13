@@ -14,5 +14,6 @@ public class BudgetApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AppContext.context = getApplicationContext();
+
     }
 }
