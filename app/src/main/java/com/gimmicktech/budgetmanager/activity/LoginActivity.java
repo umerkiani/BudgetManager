@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         bindingViewHolder = DataBindingUtil.setContentView(this, R.layout.activity_login);
         AppContext.activity = this;
         AppContext.context = this;
+
         ArrayList<String> titles = new ArrayList<>();
         titles.add("Sign In");
         titles.add("Sign Up");
@@ -46,7 +47,16 @@ public class LoginActivity extends AppCompatActivity {
 
         bindingViewHolder.loginContent.vpLoginSignup.setAdapter(adapter);
         bindingViewHolder.tlLoginTabs.setupWithViewPager(bindingViewHolder.loginContent.vpLoginSignup);
+        setupTabIcons();
+    }
 
+    private void setupTabIcons() {
+        int[] tabIcons = {
+                R.drawable.single_user,
+                R.drawable.multi_user
+        };
+        bindingViewHolder.tlLoginTabs.getTabAt(0).setIcon(tabIcons[0]);
+        bindingViewHolder.tlLoginTabs.getTabAt(1).setIcon(tabIcons[1]);
     }
 
 
@@ -81,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (SignUpFragment.iLoadProfilePicture != null) {
                         SignUpFragment.iLoadProfilePicture.ILoadProfilePicture(bitmap);
                     }
-                    new SaveImage(bitmap, "asad");
+                    new SaveImage().saveUserProfileDP(bitmap, "asad.png");
                     bitmap = null;
 
                 } catch (Exception e) {
@@ -104,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (SignUpFragment.iLoadProfilePicture != null) {
                     SignUpFragment.iLoadProfilePicture.ILoadProfilePicture(thumbnail);
                 }
-                new SaveImage(thumbnail, "asad");
+                new SaveImage().saveUserProfileDP(thumbnail, "asad.png");
                 thumbnail = null;
 
             }

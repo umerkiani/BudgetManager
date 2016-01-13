@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
 
 import com.gimmicktech.budgetmanager.R;
 import com.gimmicktech.budgetmanager.models.AppContext;
@@ -36,17 +35,11 @@ public class SelectProfilePicture implements OnClickListener {
         View view = inflater.inflate(R.layout.popup_choose_image, null);
         pwindo = new PopupWindow(view, LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT, true);
-        pwindo.setOutsideTouchable(false);
+        pwindo.setOutsideTouchable(true);
         pwindo.setTouchable(true);
-//        pwindo.setAnimationStyle(R.style.PopupWindowAnimation);
+        pwindo.setAnimationStyle(R.style.PopupWindowAnimation);
         pwindo.setBackgroundDrawable(new BitmapDrawable());
-        pwindo.setOnDismissListener(new OnDismissListener() {
 
-            @Override
-            public void onDismiss() {
-
-            }
-        });
 
         view.findViewById(R.id.iv_camera).setOnClickListener(this);
         view.findViewById(R.id.iv_gallery).setOnClickListener(this);

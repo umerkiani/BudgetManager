@@ -12,10 +12,12 @@ public class Tables {
         public static String USER_USERNAME = "user_name";
         public static String USER_EMAIL = "email";
         public static String USER_GENDER = "gender";
+        public static String USER_PASSWORD = "password";
+        public static String USER_PROFILE_DP = "profile_dp";
 
         public static String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + " ( " + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 USER_FIRST_NAME + " TEXT NOT NULL, " + USER_LAST_NAME + " TEXT NOT NULL, " + USER_USERNAME + " TEXT NOT NULL, " +
-                USER_EMAIL + " TEXT NOT NULL, " + USER_GENDER + " TEXT NOT NULL);";
+                USER_EMAIL + " TEXT NOT NULL, " + USER_GENDER + " TEXT NOT NULL," + USER_PASSWORD + " TEXT NOT NULL, " + USER_PROFILE_DP + " TEXT );";
 
         public static String DROP_TABLE_USER = "DROP TABLE IF EXISTS " + TABLE_USER;
     }

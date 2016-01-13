@@ -5,7 +5,12 @@ package com.gimmicktech.budgetmanager.models;
  */
 public class User {
 
-public String firstName = "Asad";
+    public String firstName;
+    public String lasttName;
+    public String gender;
+    public String userName;
+    public String password;
+    public String profileDp;
 
 }
 

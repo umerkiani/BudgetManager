@@ -14,13 +14,8 @@ import java.io.FileOutputStream;
  */
 public class SaveImage {
 
-    public SaveImage(Bitmap bitmap, String fileName) {
-        createDirectoryAndSaveFile(bitmap, fileName + ".png");
-//        createDirectoryFile(bitmap,fileName+".png");
-    }
 
-
-    private void createDirectoryAndSaveFile(Bitmap imageToSave, String fileName) {
+    public void saveUserProfileDP(Bitmap imageToSave, String fileName) {
 
         File direct = AppContext.context.getDir("images", Context.MODE_PRIVATE);
 
