@@ -13,12 +13,15 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.gimmicktech.budgetmanager.Database.BudgetDataBaseHelper;
+import com.gimmicktech.budgetmanager.Database.UserOperations;
 import com.gimmicktech.budgetmanager.R;
 import com.gimmicktech.budgetmanager.adapters.LoginSignUpPagerAdapter;
 import com.gimmicktech.budgetmanager.databinding.ActivityLoginBinding;
 import com.gimmicktech.budgetmanager.fragments.LoginFragment;
 import com.gimmicktech.budgetmanager.fragments.SignUpFragment;
 import com.gimmicktech.budgetmanager.models.AppContext;
+import com.gimmicktech.budgetmanager.models.User;
 import com.gimmicktech.budgetmanager.utils.SaveImage;
 
 import java.io.File;
@@ -35,6 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         bindingViewHolder = DataBindingUtil.setContentView(this, R.layout.activity_login);
         AppContext.activity = this;
         AppContext.context = this;
+
+        BudgetDataBaseHelper db = new BudgetDataBaseHelper(this);
+        UserOperations op = new UserOperations(db);
+        User user = new User();
+        user.firstName = "asad";
+        user.lasttName = "qazi";
+        user.gender = "male";
+        user.password = "abc";
+        user.profileDp = "asad.png";
+        user.userName = "asad";
+        op.registerUser(user);
 
         ArrayList<String> titles = new ArrayList<>();
         titles.add("Sign In");

@@ -11,6 +11,10 @@ import com.gimmicktech.budgetmanager.models.User;
 public class UserOperations {
     private final BudgetDataBaseHelper dbHelper;
 
+    {
+
+    }
+
     public UserOperations(BudgetDataBaseHelper db) {
         this.dbHelper = db;
     }

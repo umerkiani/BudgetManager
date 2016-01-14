@@ -32,7 +32,10 @@ public class Tables {
         public static String INCOME_TYPE_ID = "type_id";
 
         public static String CREATE_TABLE_INCOME = "CREATE TABLE " + TABLE_INCOME + " ( " + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + INCOME_AMOUNT + " INTEGER, "
-                + INCOME_DATE + " DATE, " + INCOME_DESCRIPTION + " TEXT, " + INCOME_USER_ID + " INTEGER, " + INCOME_TYPE_ID + " INTEGER);";
+                + INCOME_DATE + " DATE, " + INCOME_DESCRIPTION + " TEXT, " + INCOME_USER_ID + " INTEGER, " + INCOME_TYPE_ID + " INTEGER, " +
+                "FOREIGN KEY(" + INCOME_USER_ID + ") REFERENCES " + TableUser.TABLE_USER + "(" + TableUser.USER_ID + ")," +
+                "FOREIGN KEY(" + INCOME_TYPE_ID + ") REFERENCES " + TableIncomeType.TABLE_INCOME_TYPE + "(" + TableIncomeType.INCOME_TYPE_ID + "));";
+
         public static String DROP_TABLE_INCOME = "DROP TABLE IF EXISTS " + TABLE_INCOME;
     }
 
@@ -45,7 +48,9 @@ public class Tables {
         public static String EXPENSE_USER_ID = "user_id";
 
         public static String CREATE_TABLE_EXPENSES = "CREATE TABLE " + TABLE_EXPENSES + " ( " + EXPENSE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EXPENSE_AMOUNT + " INTEGER, " +
-                EXPENSE_DATE + " DATE, " + EXPENSE_DESCRIPTION + " TEXT, " + EXPENSE_USER_ID + " INTEGER);";
+                EXPENSE_DATE + " DATE, " + EXPENSE_DESCRIPTION + " TEXT, " + EXPENSE_USER_ID + " INTEGER, " +
+                "FOREIGN KEY(" + EXPENSE_USER_ID + ") REFERENCES " + TableUser.TABLE_USER + "(" + TableUser.USER_ID + "));";
+
         public static String DROP_TABLE_EXPENSES = "DROP TABLE IF EXISTS " + TABLE_EXPENSES;
     }
 
@@ -65,7 +70,8 @@ public class Tables {
         public static String CALCULATION_USER_ID = "user_id";
 
         public static String CREATE_TABLE_CALCULATIONS = "CREATE TABLE " + TABLE_CALCULATIONS + " ( " + CALCULATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CALCULATION_TOTAL_AMOUNT + " INTEGER, " +
-                CALCULATION_USER_ID + " INTEGER);";
+                CALCULATION_USER_ID + " INTEGER, FOREIGN KEY(" + CALCULATION_USER_ID + ") REFERENCES " + TableUser.TABLE_USER + "(" + TableUser.USER_ID + "));";
+
         public static String DROP_TABLE_CALCULATIONS = "DROP TABLE IF EXISTS " + TABLE_CALCULATIONS;
     }
 }
