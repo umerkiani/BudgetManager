@@ -1,16 +1,21 @@
 package com.gimmicktech.budgetmanager.utils;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.gimmicktech.budgetmanager.R;
 import com.gimmicktech.budgetmanager.models.AppContext;
@@ -60,8 +65,26 @@ public class SelectProfilePicture implements OnClickListener {
                         "temp.jpg");
 
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+                    if (ctxRef.checkSelfPermission(Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(AppContext.activity,
+                                Manifest.permission.CAMERA)) {
+                            Toast.makeText(ctxRef, "Accessing Camera Permission", Toast.LENGTH_SHORT).show();
+                            AppContext.activity.requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                    1);
+                        } else {
+                            AppContext.activity.requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                    1);
+                        }
 
-                AppContext.activity.startActivityForResult(intent, 1);
+                    } else {
+                        AppContext.activity.startActivityForResult(intent, 1);
+                    }
+
+                } else {
+                    AppContext.activity.startActivityForResult(intent, 1);
+                }
                 pwindo.dismiss();
                 break;
 
@@ -69,7 +92,6 @@ public class SelectProfilePicture implements OnClickListener {
                 intent = new Intent(
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
                 AppContext.activity.startActivityForResult(intent, 2);
                 pwindo.dismiss();
                 break;

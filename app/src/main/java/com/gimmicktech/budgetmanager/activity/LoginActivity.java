@@ -1,6 +1,7 @@
 package com.gimmicktech.budgetmanager.activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
@@ -13,15 +14,12 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
-import com.gimmicktech.budgetmanager.Database.BudgetDataBaseHelper;
-import com.gimmicktech.budgetmanager.Database.UserOperations;
 import com.gimmicktech.budgetmanager.R;
 import com.gimmicktech.budgetmanager.adapters.LoginSignUpPagerAdapter;
 import com.gimmicktech.budgetmanager.databinding.ActivityLoginBinding;
 import com.gimmicktech.budgetmanager.fragments.LoginFragment;
 import com.gimmicktech.budgetmanager.fragments.SignUpFragment;
 import com.gimmicktech.budgetmanager.models.AppContext;
-import com.gimmicktech.budgetmanager.models.User;
 import com.gimmicktech.budgetmanager.utils.SaveImage;
 
 import java.io.File;
@@ -39,16 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         AppContext.activity = this;
         AppContext.context = this;
 
-        BudgetDataBaseHelper db = new BudgetDataBaseHelper(this);
-        UserOperations op = new UserOperations(db);
-        User user = new User();
-        user.firstName = "asad";
-        user.lasttName = "qazi";
-        user.gender = "male";
-        user.password = "abc";
-        user.profileDp = "asad.png";
-        user.userName = "asad";
-        op.registerUser(user);
 
         ArrayList<String> titles = new ArrayList<>();
         titles.add("Sign In");
@@ -130,6 +118,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 new SaveImage().saveUserProfileDP(thumbnail, "asad.png");
                 thumbnail = null;
+
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File f = new File(android.os.Environment.getExternalStorageDirectory(),
+                        "temp.jpg");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                startActivityForResult(intent, 1);
+            } else {
 
             }
         }

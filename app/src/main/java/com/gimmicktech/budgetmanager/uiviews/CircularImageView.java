@@ -99,7 +99,7 @@ public class CircularImageView extends ImageView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int width = measureWidth(widthMeasureSpec);
+        int width = measureWidth(widthMeasureSpec) / 2;
         int height = measureHeight(heightMeasureSpec);
         setMeasuredDimension(width, height);
     }

@@ -6,23 +6,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:weightSum="10">
 
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25" />
+            android:layout_weight="0.5" />
 
         <com.gimmicktech.budgetmanager.uiviews.CircularImageView
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="2"
             android:background="@null"
-            android:foregroundGravity="center"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_bud"
             app:border_color="#ad646464"
@@ -31,22 +32,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.75"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="Manage Your Budget"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5" />
+            android:layout_weight="1" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/til_userName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.75">
 
             <EditText
                 android:layout_width="match_parent"
@@ -59,7 +60,7 @@
             android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.75">
 
             <EditText
                 android:layout_width="match_parent"
@@ -73,14 +74,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5" />
+            android:layout_weight="1.75" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_signIn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
             android:src="@drawable/ic_arrow_forward_white"
             app:backgroundTint="@color/colorGreen" />
 
@@ -92,7 +93,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.75">
+            android:layout_weight="0.75">
 
 
             <Button
@@ -102,7 +103,7 @@
                 android:layout_centerInParent="true"
                 android:background="@null"
                 android:gravity="bottom"
-                android:text="Forget Password?"
+                android:text="Forget Password"
                 android:textSize="12sp" />
 
             <View
